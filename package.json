@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.8",
-    "globals": "^17.8.0",
+    "globals": "^17.9.0",
     "npm-run-all2": "^9.0.3",
     "oxfmt": "^0.61.0",
     "oxlint": "~1.76.0",
