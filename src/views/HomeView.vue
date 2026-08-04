@@ -1,20 +1,55 @@
 <template>
-  <main class="responsive">
+  <main>
     <div class="grid">
-      <div class="s12 center-align">
-        <h1 class="primary">JRScore</h1>
+      <div class="s12">
+        <nav class="primary">
+          <h1>JRScore</h1>
+          <div class="max"></div>
+          <a href="/about" class="button transparent small-round">
+            <span>À propos</span>
+          </a>
+        </nav>
       </div>
       <div class="s2">
-        <div class="large-space center-align">
-          <button>
-            <i>attach_file</i>
-            <span>Fichier .mei</span>
-          </button>
-          <input type="file" accept=".mei" @change="onFileChange" />
-        </div>
-        <RangeSlider title="toto" />
-        <RangeSlider title="toto" />
-        <RangeSlider title="toto" />
+        <fieldset>
+          <legend>Importer</legend>
+          <div class="center-align">
+            <button>
+              <i>attach_file</i>
+              <span>Fichier .mei</span>
+            </button>
+            <input type="file" accept=".mei" @change="onFileChange" />
+          </div>
+        </fieldset>
+
+        <div class="small-space"></div>
+
+        <fieldset>
+          <legend>Réglages</legend>
+          <RangeSlider title="Param. 1" />
+          <RangeSlider title="Param. 2" />
+          <RangeSlider title="Param. 3" />
+        </fieldset>
+
+        <div class="small-space"></div>
+
+        <fieldset>
+          <legend>Exporter</legend>
+
+          <div class="field">
+            <button class="responsive">
+              <i>image</i>
+              <span>Format SVG</span>
+            </button>
+          </div>
+
+          <div class="field">
+            <button class="responsive">
+              <i>picture_as_pdf</i>
+              <span>Format PDF</span>
+            </button>
+          </div>
+        </fieldset>
       </div>
       <div class="s10">
         <ScoreViewer ref="scoreViewerRef" />
