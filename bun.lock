@@ -5,23 +5,23 @@
     "": {
       "name": "jrscore",
       "dependencies": {
-        "beercss": "^5.0.1",
-        "verovio": "^6.2.0",
-        "vue": "^3.6.0-rc.2",
-        "vue-router": "^5.2.0",
+        "beercss": "latest",
+        "verovio": "latest",
+        "vue": "latest",
+        "vue-router": "latest",
       },
       "devDependencies": {
-        "@types/bun": "^1.3.14",
-        "@vitejs/plugin-vue": "^6.0.8",
-        "globals": "^17.9.0",
-        "npm-run-all2": "^9.0.3",
-        "oxfmt": "^0.62.0",
-        "oxlint": "~1.77.0",
-        "vite": "^8.2.0",
-        "vite-plugin-vue-devtools": "^8.2.1",
+        "@types/bun": "latest",
+        "@vitejs/plugin-vue": "latest",
+        "globals": "latest",
+        "npm-run-all2": "latest",
+        "oxfmt": "latest",
+        "oxlint": "latest",
+        "vite": "latest",
+        "vite-plugin-vue-devtools": "latest",
       },
       "peerDependencies": {
-        "typescript": "^7.0.2",
+        "typescript": "latest",
       },
     },
   },
@@ -333,7 +333,7 @@
 
     "baseline-browser-mapping": ["baseline-browser-mapping@2.11.9", "", { "bin": { "baseline-browser-mapping": "dist/cli.cjs" } }, "sha512-cp447VUsGS07+n1Dqf7YSQ8maeJrjEhaDxTm1ZefbqDtypHBC5GzGMQbklR6IPR13Y8OAJRHZWEMtZipJLCttg=="],
 
-    "beercss": ["beercss@5.0.1", "", { "dependencies": { "material-dynamic-colors": "^1.1.4" } }, "sha512-Z6/a+1osE8KGIPT0r6ibaEPXhhFH3cm1Or7AAqcJhi5whQP7dC1Pv0jkh5Ah4fy6nnwVExtwAaRv1ShmJTE8Nw=="],
+    "beercss": ["beercss@5.0.3", "", { "dependencies": { "material-dynamic-colors": "^1.1.4" } }, "sha512-d451Q/em0v+QJdymVPs9RP7tKwJbZiyv8TfvSeNT4ikbz65DJZu/rCwQllA5BHdQyn3g0yMW+QPQSQa2JYAz2A=="],
 
     "birpc": ["birpc@2.9.0", "", {}, "sha512-KrayHS5pBi69Xi9JmvoqrIgYGDkD6mcSe/i6YKi3w5kekCLzrX4+nawcXqrj2tIp50Kw/mT/s3p+GVK0A0sKxw=="],
 
