@@ -1,8 +1,19 @@
 <template>
   <div class="slider-component">
-    <label :for="inputId">{{ title }}</label>
-    <input :id="inputId" type="range" v-model.number="value" :min :max :step />
-    <span>{{ value }}</span>
+    <label :id="labelId">{{ title }}</label>
+
+    <div class="slider small">
+      <input
+        type="range"
+        v-model.number="value"
+        :min="min"
+        :max="max"
+        :step="step"
+        :aria-labelledby="labelId"
+      />
+      <span></span>
+      <span class="tooltip"></span>
+    </div>
   </div>
 </template>
 
@@ -14,24 +25,9 @@ const value = defineModel('value', { type: Number, default: 5 })
 defineProps({
   min: { type: Number, default: 0 },
   max: { type: Number, default: 10 },
-  step: { type: Number, default: 1 },
+  step: { type: Number, default: 0.01 },
   title: { type: String, required: true },
 })
 
-const inputId = useId()
+const labelId = useId()
 </script>
-
-<style scoped lang="css">
-.slider-component {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  margin: 10px;
-}
-
-input[type='range'] {
-  accent-color: #35a77c;
-  width: 100%;
-}
-</style>
