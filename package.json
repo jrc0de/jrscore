@@ -13,9 +13,9 @@
   },
   "dependencies": {
     "beercss": "^5.0.3",
+    "jspdf": "^4.2.1",
     "verovio": "^6.2.0",
-    "vue": "^3.6.0-rc.2",
-    "vue-router": "^5.2.0"
+    "vue": "^3.6.0-rc.2"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^6.0.8",
