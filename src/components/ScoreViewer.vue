@@ -1,11 +1,27 @@
 <template>
-  <div ref="wrapperRef" class="notation-wrapper">
-    <div
-      ref="notationRef"
-      class="notation"
-      :class="{ 'has-score': hasScore, 'fixed-page': format !== 'adjusted' }"
-      :style="pageStyle"
-    ></div>
+  <div class="viewer-container">
+    <!-- Contrôles de navigation (uniquement en mode multipage) -->
+    <div v-if="totalPages > 1" class="page-controls">
+      <button @click="previousPage" :disabled="currentPage === 1" class="icon-btn">
+        <i>chevron_left</i>
+      </button>
+
+      <span class="page-indicator">{{ currentPage }} / {{ totalPages }}</span>
+
+      <button @click="nextPage" :disabled="currentPage === totalPages" class="icon-btn">
+        <i>chevron_right</i>
+      </button>
+    </div>
+
+    <!-- Zone d'affichage de la partition -->
+    <div ref="wrapperRef" class="notation-wrapper">
+      <div
+        ref="notationRef"
+        class="notation"
+        :class="{ 'has-score': hasScore, 'fixed-page': format !== 'adjusted' }"
+        :style="pageStyle"
+      ></div>
+    </div>
   </div>
 </template>
 
@@ -17,7 +33,10 @@ import { VerovioToolkit } from 'verovio/esm'
 const wrapperRef = ref(null)
 const notationRef = ref(null)
 const hasScore = ref(false)
-const boxSize = ref(null) // { width, height } en px, null = taille naturelle (mode "adjusté")
+const boxSize = ref(null)
+const currentPage = ref(1)
+const totalPages = ref(1)
+
 let toolkit = null
 let currentMei = null
 let resizeObserver = null
@@ -95,12 +114,12 @@ function updateBoxSize() {
   if (!wrapperRef.value) return
 
   if (props.format === 'adjusted') {
-    boxSize.value = null // la boîte s'adapte librement au contenu
+    boxSize.value = null
     return
   }
 
   const opts = FORMAT_OPTIONS[props.format]
-  const ratio = opts.pageWidth / opts.pageHeight // largeur / hauteur
+  const ratio = opts.pageWidth / opts.pageHeight
 
   const cw = wrapperRef.value.clientWidth
   const ch = wrapperRef.value.clientHeight
@@ -136,7 +155,20 @@ function applyOptionsAndRender() {
   if (!toolkit || !currentMei) return
   toolkit.setOptions({ footer: 'none', ...FORMAT_OPTIONS[props.format] })
   toolkit.loadData(currentMei)
-  const svg = toolkit.renderToSVG(1)
+
+  // Obtenir le nombre total de pages
+  totalPages.value = toolkit.getPageCount()
+
+  // S'assurer que currentPage ne dépasse pas le nombre de pages
+  if (currentPage.value > totalPages.value) {
+    currentPage.value = totalPages.value
+  }
+  if (currentPage.value < 1) {
+    currentPage.value = 1
+  }
+
+  // Rendre la page actuelle
+  const svg = toolkit.renderToSVG(currentPage.value)
   notationRef.value.innerHTML = svg
 
   const svgEl = notationRef.value.querySelector('svg')
@@ -150,9 +182,42 @@ function applyOptionsAndRender() {
 
 function renderMei(meiString) {
   currentMei = meiString
+  currentPage.value = 1
   applyOptionsAndRender()
 }
 
+function nextPage() {
+  if (currentPage.value < totalPages.value) {
+    currentPage.value++
+  }
+}
+
+function previousPage() {
+  if (currentPage.value > 1) {
+    currentPage.value--
+  }
+}
+
+function clampPage() {
+  if (currentPage.value < 1) currentPage.value = 1
+  if (currentPage.value > totalPages.value) currentPage.value = totalPages.value
+}
+
+// Watcher pour les changements de page
+watch(currentPage, () => {
+  if (currentMei && toolkit) {
+    const svg = toolkit.renderToSVG(currentPage.value)
+    notationRef.value.innerHTML = svg
+
+    const svgEl = notationRef.value.querySelector('svg')
+    if (svgEl) {
+      svgEl.removeAttribute('width')
+      svgEl.removeAttribute('height')
+    }
+  }
+})
+
+// Watcher pour les changements de format
 watch(
   () => props.format,
   async () => {
@@ -162,13 +227,46 @@ watch(
   },
 )
 
-defineExpose({ renderMei })
+defineExpose({ renderMei, currentPage, totalPages })
 </script>
 
 <style scoped>
-.notation-wrapper {
+.viewer-container {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page-controls {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.icon-btn {
+  padding: 0.4rem !important;
+  min-width: auto !important;
+}
+
+.icon-btn:disabled {
+  opacity: 0.4;
+}
+
+.page-indicator {
+  font-size: 0.9rem;
+  font-weight: 500;
+  min-width: 70px;
+  text-align: center;
+}
+
+.notation-wrapper {
+  flex: 1;
   min-width: 0;
   min-height: 0;
   display: flex;
@@ -177,11 +275,9 @@ defineExpose({ renderMei })
   overflow: hidden;
 }
 
-/* Mode "Ajusté" : la boîte s'adapte au contenu, comme avant */
 .notation.has-score {
   background: white;
-  padding: 1rem;
-  border-radius: 8px;
+  padding: 0.75rem;
   max-width: 100%;
   max-height: 100%;
   min-width: 0;
@@ -201,10 +297,9 @@ defineExpose({ renderMei })
   display: block;
 }
 
-/* Formats fixes (A4/A5) : la boîte a une taille imposée (calculée en JS)
-   qui respecte exactement le ratio largeur/hauteur de la page */
 .notation.fixed-page {
   overflow: hidden;
+  padding: 0;
 }
 
 .notation.fixed-page :deep(svg) {
