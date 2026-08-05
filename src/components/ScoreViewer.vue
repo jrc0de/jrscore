@@ -55,6 +55,8 @@ const FORMAT_OPTIONS = {
     pageMarginBottom: 10,
     pageMarginLeft: 10,
     pageMarginRight: 10,
+    footer: 'none',
+    header: 'none',
   },
   'a4-portrait': {
     breaks: 'auto',
@@ -66,6 +68,8 @@ const FORMAT_OPTIONS = {
     pageMarginBottom: 50,
     pageMarginLeft: 50,
     pageMarginRight: 50,
+    footer: 'none',
+    header: 'none',
   },
   'a4-landscape': {
     breaks: 'auto',
@@ -77,6 +81,8 @@ const FORMAT_OPTIONS = {
     pageMarginBottom: 50,
     pageMarginLeft: 50,
     pageMarginRight: 50,
+    footer: 'none',
+    header: 'none',
   },
   'a5-portrait': {
     breaks: 'auto',
@@ -88,6 +94,8 @@ const FORMAT_OPTIONS = {
     pageMarginBottom: 40,
     pageMarginLeft: 40,
     pageMarginRight: 40,
+    footer: 'none',
+    header: 'none',
   },
   'a5-landscape': {
     breaks: 'auto',
@@ -99,6 +107,8 @@ const FORMAT_OPTIONS = {
     pageMarginBottom: 40,
     pageMarginLeft: 40,
     pageMarginRight: 40,
+    footer: 'none',
+    header: 'none',
   },
 }
 
