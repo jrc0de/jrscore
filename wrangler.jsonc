@@ -1,0 +1,6 @@
+{
+  "name": "JRScore",
+  "assets": {
+    "directory": "./dist"
+  }
+}
