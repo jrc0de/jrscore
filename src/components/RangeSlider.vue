@@ -17,16 +17,34 @@
   </div>
 </template>
 
-<script setup lang="js">
+<script setup>
 import { useId } from 'vue'
 
-const value = defineModel('value', { type: Number, default: 5 })
+const value = defineModel('value', {
+  type: Number,
+  required: true,
+})
 
 defineProps({
-  min: { type: Number, default: 0 },
-  max: { type: Number, default: 10 },
-  step: { type: Number, default: 0.01 },
-  title: { type: String, required: true },
+  min: {
+    type: Number,
+    default: 0,
+  },
+
+  max: {
+    type: Number,
+    default: 100,
+  },
+
+  step: {
+    type: Number,
+    default: 1,
+  },
+
+  title: {
+    type: String,
+    required: true,
+  },
 })
 
 const labelId = useId()
