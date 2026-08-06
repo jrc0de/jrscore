@@ -116,7 +116,7 @@ const layoutOptions = ref({
 
   pageMarginRight: 50,
 
-  scale: 40,
+  scale: 30,
 
   staffSpacing: 8,
 })
