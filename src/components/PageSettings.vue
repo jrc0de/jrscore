@@ -1,5 +1,16 @@
 <template>
   <fieldset>
+    <legend>Options</legend>
+
+    <label class="checkbox">
+      <input type="checkbox" v-model="options.showMeasureNumbers" />
+      <span>Numéros de mesure</span>
+    </label>
+  </fieldset>
+
+  <div class="small-space"></div>
+
+  <fieldset>
     <legend>Réglages</legend>
 
     <RangeSlider
