@@ -9,7 +9,7 @@
 
     <div class="max"></div>
 
-    <button class="circle transparent" data-ui="#about-dialog">
+    <button class="circle transparent about-button" data-ui="#about-dialog">
       <i>info</i>
     </button>
 
@@ -29,6 +29,8 @@
             <i class="tiny">open_in_new</i> </a
           >.
         </p>
+
+        <p>Construit avec Vue 3 et BeerCSS.</p>
       </div>
 
       <nav class="right-align no-space">
@@ -51,6 +53,7 @@
   width: 42px;
   height: 42px;
   object-fit: contain;
+  flex-shrink: 0;
 }
 
 .title-area {
@@ -58,6 +61,7 @@
   flex-direction: column;
   justify-content: center;
   line-height: 1.1;
+  min-width: 0;
 }
 
 .title-area h5 {
@@ -65,6 +69,9 @@
   font-weight: 800;
   letter-spacing: -0.03em;
   font-size: 1.35rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .title-area small {
@@ -72,6 +79,16 @@
   opacity: 0.65;
   font-size: 0.85rem;
   font-style: italic;
+}
+
+@media only screen and (max-width: 600px) {
+  .title-area small {
+    display: none;
+  }
+}
+
+.about-button {
+  flex-shrink: 0;
 }
 
 .about-dialog {
