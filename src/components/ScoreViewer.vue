@@ -45,10 +45,10 @@ const props = defineProps({
     type: Object,
 
     default: () => ({
-      pageMarginTop: 50,
-      pageMarginBottom: 50,
-      pageMarginLeft: 50,
-      pageMarginRight: 50,
+      pageMarginTop: 10,
+      pageMarginBottom: 10,
+      pageMarginLeft: 10,
+      pageMarginRight: 10,
 
       scale: 30,
 
@@ -229,7 +229,6 @@ defineExpose({
 
 .notation.has-score {
   background: white;
-  padding: 0.75rem;
   box-sizing: border-box;
   flex-shrink: 0;
 }

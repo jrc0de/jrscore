@@ -108,13 +108,13 @@ const exporting = ref(false)
   pilotés par les sliders
 */
 const layoutOptions = ref({
-  pageMarginTop: 50,
+  pageMarginTop: 10,
 
-  pageMarginBottom: 50,
+  pageMarginBottom: 10,
 
-  pageMarginLeft: 50,
+  pageMarginLeft: 10,
 
-  pageMarginRight: 50,
+  pageMarginRight: 10,
 
   scale: 30,
 
