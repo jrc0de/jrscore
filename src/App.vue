@@ -23,8 +23,6 @@
           </div>
         </fieldset>
 
-        <div class="small-space"></div>
-
         <fieldset>
           <legend>Format</legend>
 
@@ -58,8 +56,6 @@
 
         <PageSettings v-model="layoutOptions" />
 
-        <div class="small-space"></div>
-
         <fieldset>
           <legend>Exporter</legend>
 
@@ -92,46 +88,25 @@ import PageSettings from '@/components/PageSettings.vue'
 import ScoreViewer from '@/components/ScoreViewer.vue'
 
 const scoreViewerRef = ref(null)
-
 const fileInput = ref(null)
-
 const selectedFormat = ref('adjusted')
-
 const hasScore = ref(false)
-
 const currentFileName = ref('score')
-
 const exporting = ref(false)
 
-/*
-  Tous les paramètres Verovio
-  pilotés par les sliders
-*/
 const layoutOptions = ref({
   pageMarginTop: 10,
-
   pageMarginBottom: 10,
-
   pageMarginLeft: 10,
-
   pageMarginRight: 10,
-
   scale: 30,
-
   staffSpacing: 8,
-
+  spacingLinear: 0.25,
+  spacingNonLinear: 0.6,
   showMeasureNumbers: true,
-
   useEncodedBreaks: false,
 })
 
-/*
-  Le mode "Ajusté" bascule automatiquement les marges à 10
-  (comportement du script --crop). On mémorise les marges
-  précédentes pour les restaurer en quittant ce mode.
-  Le format par défaut étant "adjusted", on pré-charge ici
-  les marges générales (50) à restaurer plus tard.
-*/
 let savedMargins = {
   pageMarginTop: 50,
   pageMarginBottom: 50,
@@ -283,51 +258,36 @@ function downloadBlob(blob, filename) {
 <style scoped>
 .app-layout {
   height: 100vh;
-
   display: flex;
-
   flex-direction: column;
-
   overflow: hidden;
-
   padding: 0;
 }
 
 .app-body {
   flex: 1;
-
   min-height: 0;
-
   display: flex;
-
   overflow: hidden;
 }
 
 .sidebar {
   width: 260px;
-
   flex-shrink: 0;
-
   overflow-y: auto;
-
   padding: 1rem;
 }
 
 .viewer-panel {
   flex: 1;
-
   min-width: 0;
-
   min-height: 0;
-
   overflow: hidden;
 }
 
 .radio-group {
   display: flex;
-
   flex-direction: column;
-
   gap: 0.5rem;
 }
 </style>

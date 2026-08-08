@@ -13,7 +13,10 @@
     </label>
   </fieldset>
 
-  <div class="small-space"></div>
+  <fieldset>
+    <legend>Affichage</legend>
+    <RangeSlider title="Zoom" :min="10" :max="120" :step="5" v-model:value="options.scale" />
+  </fieldset>
 
   <fieldset>
     <legend>Réglages</legend>
@@ -57,14 +60,22 @@
       :step="1"
       v-model:value="options.staffSpacing"
     />
-  </fieldset>
 
-  <div class="small-space"></div>
+    <RangeSlider
+      title="Espacement linéaire"
+      :min="0"
+      :max="1"
+      :step="0.05"
+      v-model:value="options.spacingLinear"
+    />
 
-  <fieldset>
-    <legend>Affichage</legend>
-
-    <RangeSlider title="Zoom" :min="10" :max="120" :step="5" v-model:value="options.scale" />
+    <RangeSlider
+      title="Espacement non linéaire"
+      :min="0"
+      :max="1"
+      :step="0.05"
+      v-model:value="options.spacingNonLinear"
+    />
   </fieldset>
 </template>
 

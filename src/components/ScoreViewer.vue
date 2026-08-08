@@ -54,6 +54,10 @@ const props = defineProps({
 
       staffSpacing: 8,
 
+      spacingLinear: 0.25,
+
+      spacingNonLinear: 0.6,
+
       showMeasureNumbers: true,
 
       useEncodedBreaks: false,
@@ -127,6 +131,8 @@ function getVerovioOptions() {
     pageMarginRight: props.layoutOptions.pageMarginRight,
     scale: props.layoutOptions.scale,
     spacingStaff: props.layoutOptions.staffSpacing,
+    spacingLinear: props.layoutOptions.spacingLinear,
+    spacingNonLinear: props.layoutOptions.spacingNonLinear,
     breaks: props.layoutOptions.useEncodedBreaks ? 'encoded' : FORMAT_OPTIONS[props.format].breaks,
   }
 }
