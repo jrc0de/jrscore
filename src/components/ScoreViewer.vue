@@ -55,6 +55,8 @@ const props = defineProps({
       staffSpacing: 8,
 
       showMeasureNumbers: true,
+
+      useEncodedBreaks: false,
     }),
   },
 })
@@ -125,6 +127,7 @@ function getVerovioOptions() {
     pageMarginRight: props.layoutOptions.pageMarginRight,
     scale: props.layoutOptions.scale,
     spacingStaff: props.layoutOptions.staffSpacing,
+    breaks: props.layoutOptions.useEncodedBreaks ? 'encoded' : FORMAT_OPTIONS[props.format].breaks,
   }
 }
 

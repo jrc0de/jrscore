@@ -121,6 +121,8 @@ const layoutOptions = ref({
   staffSpacing: 8,
 
   showMeasureNumbers: true,
+
+  useEncodedBreaks: false,
 })
 
 function triggerFileInput() {

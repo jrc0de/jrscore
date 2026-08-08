@@ -6,6 +6,11 @@
       <input type="checkbox" v-model="options.showMeasureNumbers" />
       <span>Numéros de mesure</span>
     </label>
+
+    <label class="checkbox">
+      <input type="checkbox" v-model="options.useEncodedBreaks" />
+      <span>Sauts fixes</span>
+    </label>
   </fieldset>
 
   <div class="small-space"></div>
