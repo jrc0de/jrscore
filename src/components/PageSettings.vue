@@ -65,7 +65,7 @@
       title="Espacement linéaire"
       :min="0"
       :max="1"
-      :step="0.05"
+      :step="0.01"
       v-model:value="options.spacingLinear"
     />
 
@@ -73,7 +73,7 @@
       title="Espacement non linéaire"
       :min="0"
       :max="1"
-      :step="0.05"
+      :step="0.01"
       v-model:value="options.spacingNonLinear"
     />
   </fieldset>
