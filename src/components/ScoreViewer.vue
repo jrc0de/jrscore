@@ -45,10 +45,10 @@ const props = defineProps({
     type: Object,
 
     default: () => ({
-      pageMarginTop: 10,
-      pageMarginBottom: 10,
-      pageMarginLeft: 10,
-      pageMarginRight: 10,
+      pageMarginTop: 50,
+      pageMarginBottom: 50,
+      pageMarginLeft: 50,
+      pageMarginRight: 50,
 
       scale: 30,
 

@@ -84,7 +84,7 @@
 </template>
 
 <script setup lang="js">
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 import JSZip from 'jszip'
 
 import Header from '@/components/Header.vue'
@@ -123,6 +123,43 @@ const layoutOptions = ref({
   showMeasureNumbers: true,
 
   useEncodedBreaks: false,
+})
+
+/*
+  Le mode "Ajusté" bascule automatiquement les marges à 10
+  (comportement du script --crop). On mémorise les marges
+  précédentes pour les restaurer en quittant ce mode.
+  Le format par défaut étant "adjusted", on pré-charge ici
+  les marges générales (50) à restaurer plus tard.
+*/
+let savedMargins = {
+  pageMarginTop: 50,
+  pageMarginBottom: 50,
+  pageMarginLeft: 50,
+  pageMarginRight: 50,
+}
+
+watch(selectedFormat, (newFormat, oldFormat) => {
+  if (newFormat === 'adjusted' && oldFormat !== 'adjusted') {
+    savedMargins = {
+      pageMarginTop: layoutOptions.value.pageMarginTop,
+      pageMarginBottom: layoutOptions.value.pageMarginBottom,
+      pageMarginLeft: layoutOptions.value.pageMarginLeft,
+      pageMarginRight: layoutOptions.value.pageMarginRight,
+    }
+
+    layoutOptions.value.pageMarginTop = 10
+    layoutOptions.value.pageMarginBottom = 10
+    layoutOptions.value.pageMarginLeft = 10
+    layoutOptions.value.pageMarginRight = 10
+  } else if (oldFormat === 'adjusted' && newFormat !== 'adjusted' && savedMargins) {
+    layoutOptions.value.pageMarginTop = savedMargins.pageMarginTop
+    layoutOptions.value.pageMarginBottom = savedMargins.pageMarginBottom
+    layoutOptions.value.pageMarginLeft = savedMargins.pageMarginLeft
+    layoutOptions.value.pageMarginRight = savedMargins.pageMarginRight
+
+    savedMargins = null
+  }
 })
 
 function triggerFileInput() {
