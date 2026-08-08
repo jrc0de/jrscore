@@ -29,8 +29,6 @@
             <i class="tiny">open_in_new</i> </a
           >.
         </p>
-
-        <p>Construit avec Vue 3 et BeerCSS.</p>
       </div>
 
       <nav class="right-align no-space">
