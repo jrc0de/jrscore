@@ -289,6 +289,8 @@ function downloadBlob(blob, filename) {
   flex-direction: column;
 
   overflow: hidden;
+
+  padding: 0;
 }
 
 .app-body {
