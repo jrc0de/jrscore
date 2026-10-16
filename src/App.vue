@@ -104,6 +104,7 @@ const layoutOptions = ref({
   spacingLinear: 0.25,
   spacingNonLinear: 0.6,
   showMeasureNumbers: true,
+  showTitle: true,
   useEncodedBreaks: false,
 })
 

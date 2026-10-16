@@ -8,6 +8,11 @@
     </label>
 
     <label class="checkbox">
+      <input type="checkbox" v-model="options.showTitle" />
+      <span>Titre et compositeur</span>
+    </label>
+
+    <label class="checkbox">
       <input type="checkbox" v-model="options.useEncodedBreaks" />
       <span>Sauts fixes</span>
     </label>

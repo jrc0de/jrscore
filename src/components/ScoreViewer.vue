@@ -60,6 +60,8 @@ const props = defineProps({
 
       showMeasureNumbers: true,
 
+      showTitle: true,
+
       useEncodedBreaks: false,
     }),
   },
@@ -71,7 +73,6 @@ const FORMAT_OPTIONS = {
     adjustPageHeight: true,
     adjustPageWidth: true,
     footer: 'none',
-    header: 'none',
   },
 
   'a4-portrait': {
@@ -81,7 +82,6 @@ const FORMAT_OPTIONS = {
     pageWidth: 2100,
     pageHeight: 2970,
     footer: 'none',
-    header: 'none',
   },
 
   'a4-landscape': {
@@ -91,7 +91,6 @@ const FORMAT_OPTIONS = {
     pageWidth: 2970,
     pageHeight: 2100,
     footer: 'none',
-    header: 'none',
   },
 
   'a5-portrait': {
@@ -101,7 +100,6 @@ const FORMAT_OPTIONS = {
     pageWidth: 1480,
     pageHeight: 2100,
     footer: 'none',
-    header: 'none',
   },
 
   'a5-landscape': {
@@ -111,7 +109,6 @@ const FORMAT_OPTIONS = {
     pageWidth: 2100,
     pageHeight: 1480,
     footer: 'none',
-    header: 'none',
   },
 }
 
@@ -123,8 +120,8 @@ onMounted(async () => {
 function getVerovioOptions() {
   return {
     footer: 'none',
-    header: 'none',
     ...FORMAT_OPTIONS[props.format],
+    header: props.layoutOptions.showTitle ? 'auto' : 'none',
     pageMarginTop: props.layoutOptions.pageMarginTop,
     pageMarginBottom: props.layoutOptions.pageMarginBottom,
     pageMarginLeft: props.layoutOptions.pageMarginLeft,
