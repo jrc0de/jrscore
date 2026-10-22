@@ -18,9 +18,9 @@
 </template>
 
 <script setup>
-import { useId } from 'vue'
+import { useId } from "vue"
 
-const value = defineModel('value', {
+const value = defineModel("value", {
   type: Number,
   required: true,
 })

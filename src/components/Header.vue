@@ -18,13 +18,17 @@
 
       <div>
         <p>
-          JRScore est un visualiseur et convertisseur de partitions MEI vers SVG, basé sur le moteur
-          de gravure musicale
+          JRScore est un visualiseur et convertisseur de partitions MEI vers
+          SVG, basé sur le moteur de gravure musicale
           <a class="link" href="https://www.verovio.org/" target="_blank">
             Verovio
             <i class="tiny">open_in_new</i> </a
           >, distribué sous licence
-          <a class="link" href="https://www.gnu.org/licenses/lgpl-3.0.html" target="_blank">
+          <a
+            class="link"
+            href="https://www.gnu.org/licenses/lgpl-3.0.html"
+            target="_blank"
+          >
             LGPLv3
             <i class="tiny">open_in_new</i> </a
           >.

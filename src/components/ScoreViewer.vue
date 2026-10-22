@@ -1,13 +1,21 @@
 <template>
   <div class="viewer-container">
     <div v-if="totalPages > 1" class="page-controls">
-      <button @click="previousPage" :disabled="currentPage === 1" class="icon-btn">
+      <button
+        @click="previousPage"
+        :disabled="currentPage === 1"
+        class="icon-btn"
+      >
         <i>chevron_left</i>
       </button>
 
       <span class="page-indicator"> {{ currentPage }} / {{ totalPages }} </span>
 
-      <button @click="nextPage" :disabled="currentPage === totalPages" class="icon-btn">
+      <button
+        @click="nextPage"
+        :disabled="currentPage === totalPages"
+        class="icon-btn"
+      >
         <i>chevron_right</i>
       </button>
     </div>
@@ -26,9 +34,9 @@
 </template>
 
 <script setup lang="js">
-import { ref, onMounted, watch } from 'vue'
-import createVerovioModule from 'verovio/wasm'
-import { VerovioToolkit } from 'verovio/esm'
+import { ref, onMounted, watch } from "vue"
+import createVerovioModule from "verovio/wasm"
+import { VerovioToolkit } from "verovio/esm"
 const notationRef = ref(null)
 const hasScore = ref(false)
 const currentPage = ref(1)
@@ -38,7 +46,7 @@ let currentMei = null
 const props = defineProps({
   format: {
     type: String,
-    default: 'adjusted',
+    default: "adjusted",
   },
 
   layoutOptions: {
@@ -69,46 +77,46 @@ const props = defineProps({
 
 const FORMAT_OPTIONS = {
   adjusted: {
-    breaks: 'none',
+    breaks: "none",
     adjustPageHeight: true,
     adjustPageWidth: true,
-    footer: 'none',
+    footer: "none",
   },
 
-  'a4-portrait': {
-    breaks: 'auto',
+  "a4-portrait": {
+    breaks: "auto",
     adjustPageHeight: false,
     adjustPageWidth: false,
     pageWidth: 2100,
     pageHeight: 2970,
-    footer: 'none',
+    footer: "none",
   },
 
-  'a4-landscape': {
-    breaks: 'auto',
+  "a4-landscape": {
+    breaks: "auto",
     adjustPageHeight: false,
     adjustPageWidth: false,
     pageWidth: 2970,
     pageHeight: 2100,
-    footer: 'none',
+    footer: "none",
   },
 
-  'a5-portrait': {
-    breaks: 'auto',
+  "a5-portrait": {
+    breaks: "auto",
     adjustPageHeight: false,
     adjustPageWidth: false,
     pageWidth: 1480,
     pageHeight: 2100,
-    footer: 'none',
+    footer: "none",
   },
 
-  'a5-landscape': {
-    breaks: 'auto',
+  "a5-landscape": {
+    breaks: "auto",
     adjustPageHeight: false,
     adjustPageWidth: false,
     pageWidth: 2100,
     pageHeight: 1480,
-    footer: 'none',
+    footer: "none",
   },
 }
 
@@ -119,9 +127,9 @@ onMounted(async () => {
 
 function getVerovioOptions() {
   return {
-    footer: 'none',
+    footer: "none",
     ...FORMAT_OPTIONS[props.format],
-    header: props.layoutOptions.showTitle ? 'auto' : 'none',
+    header: props.layoutOptions.showTitle ? "auto" : "none",
     pageMarginTop: props.layoutOptions.pageMarginTop,
     pageMarginBottom: props.layoutOptions.pageMarginBottom,
     pageMarginLeft: props.layoutOptions.pageMarginLeft,
@@ -130,7 +138,9 @@ function getVerovioOptions() {
     spacingStaff: props.layoutOptions.staffSpacing,
     spacingLinear: props.layoutOptions.spacingLinear,
     spacingNonLinear: props.layoutOptions.spacingNonLinear,
-    breaks: props.layoutOptions.useEncodedBreaks ? 'encoded' : FORMAT_OPTIONS[props.format].breaks,
+    breaks: props.layoutOptions.useEncodedBreaks
+      ? "encoded"
+      : FORMAT_OPTIONS[props.format].breaks,
   }
 }
 

@@ -20,7 +20,13 @@
 
   <fieldset>
     <legend>Affichage</legend>
-    <RangeSlider title="Zoom" :min="10" :max="120" :step="5" v-model:value="options.scale" />
+    <RangeSlider
+      title="Zoom"
+      :min="10"
+      :max="120"
+      :step="5"
+      v-model:value="options.scale"
+    />
   </fieldset>
 
   <fieldset>
@@ -85,7 +91,7 @@
 </template>
 
 <script setup>
-import RangeSlider from '@/components/RangeSlider.vue'
+import RangeSlider from "@/components/RangeSlider.vue"
 
 const options = defineModel({
   type: Object,
